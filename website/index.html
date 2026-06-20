@@ -78,14 +78,11 @@ p:last-child{margin-bottom:0}
 .boundary{color:var(--red);font-weight:600}
 .takeaway{font-size:1.16rem;color:var(--ink)}
 pre{margin:1.3rem 0 0;padding:1rem;overflow:auto;border:1px solid var(--rule);border-radius:3px;background:var(--wash);font-size:11px;line-height:1.6}
-footer{display:flex;justify-content:space-between;gap:1rem;padding:2.5rem 0 4rem;border-top:1px solid var(--rule);font-family:var(--mono);font-size:10px;color:var(--faint)}
 @media(max-width:650px){
-  .nav-links a:not(:last-child){display:none}
   .hero{padding-top:3.5rem}
   .steps,.stats{grid-template-columns:1fr}
   .stat{border-right:0;border-bottom:1px solid var(--rule)}
   .stat:last-child{border-bottom:0}
-  footer{flex-direction:column}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
@@ -94,8 +91,6 @@ footer{display:flex;justify-content:space-between;gap:1rem;padding:2.5rem 0 4rem
 <nav>
   <span class="logo">Commitment Boundary</span>
   <div class="nav-links">
-    <a href="#claim">Main claim</a>
-    <a href="#evidence">Evidence</a>
     <a href="#cite">Cite</a>
   </div>
 </nav>
@@ -108,7 +103,7 @@ footer{display:flex;justify-content:space-between;gap:1rem;padding:2.5rem 0 4rem
     <p class="authors">Daniel Scalena · Sara Candussio · Luca Bortolussi · Elisabetta Fersini · Malvina Nissim · Gabriele Sarti</p>
     <p class="affiliations">University of Groningen · University of Milano-Bicocca · University of Trieste · Northeastern University</p>
     <div class="pill-row">
-      <a href="https://arxiv.org/pdf/2606.13603" class="pill">Paper (arXiv)</a>
+      <a href="https://arxiv.org/abs/2606.13603" class="pill">Paper (arXiv)</a>
       <a href="https://github.com/DanielSc4/Commitment-Boundary" class="pill">Code &amp; data</a>
     </div>
   </header>
@@ -182,10 +177,6 @@ footer{display:flex;justify-content:space-between;gap:1rem;padding:2.5rem 0 4rem
   <section id="cite">
     <h2>Paper and citation</h2>
     <p><em>Beyond the Commitment Boundary: Probing Epiphenomenal Chain-of-Thought in Large Reasoning Models.</em> 2026.</p>
-    <div class="pill-row">
-      <a href="https://arxiv.org/pdf/2606.13603" class="pill">Read the paper</a>
-      <a href="https://github.com/DanielSc4/Commitment-Boundary" class="pill">Explore the repository</a>
-    </div>
     <pre>@article{scalena2026commitment,
   title  = {Beyond the Commitment Boundary: Probing Epiphenomenal
             Chain-of-Thought in Large Reasoning Models},
@@ -194,11 +185,6 @@ footer{display:flex;justify-content:space-between;gap:1rem;padding:2.5rem 0 4rem
   year   = {2026}
 }</pre>
   </section>
-
-  <footer>
-    <span>Scalena, Candussio et al. · 2026</span>
-    <span>Code and data available on GitHub</span>
-  </footer>
 </main>
 </body>
 </html>

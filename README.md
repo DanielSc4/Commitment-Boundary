@@ -1,6 +1,7 @@
 # Beyond the Commitment Boundary: Probing Epiphenomenal Chain-of-Thought in Large Reasoning Models
 
 [📜 Paper](https://arxiv.org/abs/2606.13603) ·
+[🌐 Project website](https://commitment-boundary.danielsc4.it) ·
 [⚙️ Practical pipeline](docs/PIPELINE.md) ·
 [✍️ Citation](#citation)
 

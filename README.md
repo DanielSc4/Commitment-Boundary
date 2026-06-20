@@ -8,7 +8,7 @@ Official code for the paper
 [✍️ Citation](#citation)
 
 <p align="center">
-  <img src="assets/teaser_animated.gif"
+  <img src="website/assets/teaser_animated.gif"
        alt="Animated overview of commitment-boundary attribution and probe-guided early exit"
        width="760">
 </p>

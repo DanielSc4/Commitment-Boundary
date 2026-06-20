@@ -1,8 +1,7 @@
 """Shared utilities for the attributions pipeline.
 
-Consolidates data loading, thinking-token config, and answer extraction
-that were previously spread across neurohike.core.data, shared.data_utils,
-and shared.thinking_tokens.
+Consolidates data loading, thinking-token configuration, and answer
+extraction used throughout the attribution pipeline.
 """
 
 from __future__ import annotations

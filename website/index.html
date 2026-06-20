@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Beyond the Commitment Boundary: large reasoning models often settle on their final answer well before their chain-of-thought ends.">
+<link rel="canonical" href="https://commitment-boundary.danielsc4.it/">
+<meta property="og:title" content="Beyond the Commitment Boundary">
+<meta property="og:description" content="Large reasoning models often settle on their final answer well before their chain-of-thought ends.">
+<meta property="og:url" content="https://commitment-boundary.danielsc4.it/">
+<meta property="og:type" content="website">
+<title>Beyond the Commitment Boundary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#fff;--ink:#18160f;--body:#35312b;--mid:#6b6560;--faint:#9a948d;
+  --rule:#ddd9d3;--blue:#3a7be0;--red:#c0392b;--wash:#f7f5f1;
+  --serif:"Source Serif 4",Georgia,serif;--mono:"IBM Plex Mono",monospace
+}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:18px;line-height:1.72}
+a{color:inherit}
+nav{
+  position:sticky;top:0;z-index:10;height:48px;padding:0 max(1.25rem,calc((100vw - 780px)/2));
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  border-bottom:1px solid var(--rule);background:rgba(255,255,255,.94);backdrop-filter:blur(8px)
+}
+.logo,.nav-links a,.eyebrow,.caption,.kicker,.pill,.stat-label,pre{
+  font-family:var(--mono)
+}
+.logo{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mid)}
+.nav-links{display:flex;gap:1.4rem}
+.nav-links a{font-size:11px;letter-spacing:.05em;text-decoration:none;color:var(--mid)}
+.nav-links a:hover{color:var(--ink)}
+.page{max-width:780px;margin:auto;padding:0 1.5rem}
+.hero{padding:5rem 0 2.5rem}
+.eyebrow{margin:0 0 1.25rem;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--mid)}
+h1{max-width:730px;margin:0 0 1.25rem;font-size:clamp(2.25rem,6.5vw,4rem);font-weight:600;line-height:1.06;letter-spacing:-.035em}
+h1 em{color:var(--red);font-weight:300}
+.dek{max-width:650px;margin:0 0 1.5rem;font-size:1.22rem;line-height:1.55;color:var(--body)}
+.authors{margin:0 0 .25rem;font-size:15px;color:var(--mid)}
+.affiliations{margin:0 0 1.8rem;font-size:11px;line-height:1.6;letter-spacing:.02em;color:var(--faint);font-family:var(--mono)}
+.pill-row{display:flex;flex-wrap:wrap;gap:.6rem}
+.pill{
+  display:inline-flex;align-items:center;padding:.35rem .8rem;border:1px solid var(--rule);
+  border-radius:3px;font-size:12px;text-decoration:none;transition:.15s ease
+}
+.pill:hover{border-color:var(--blue);background:#eef4ff}
+.teaser{margin:0 0 3.2rem}
+.teaser img{display:block;width:100%;height:auto;border:1px solid var(--rule);border-radius:4px;background:var(--wash)}
+.caption{margin:.7rem 0 0;font-size:10px;line-height:1.55;color:var(--faint)}
+section{padding:3rem 0;border-top:1px solid var(--rule)}
+h2{margin:0 0 1rem;font-size:1.45rem;line-height:1.25;letter-spacing:-.015em}
+p{margin:0 0 1rem;color:var(--body)}
+p:last-child{margin-bottom:0}
+.lead{font-size:1.2rem;line-height:1.6;color:var(--ink)}
+.claim{
+  margin:1.6rem 0 0;padding:1.25rem 1.4rem;border-left:3px solid var(--red);background:#fdf6f5
+}
+.claim p{font-size:1.05rem;color:var(--ink)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:1.8rem 0;background:var(--rule);border:1px solid var(--rule)}
+.step{padding:1.25rem;background:#fff}
+.kicker{display:block;margin-bottom:.45rem;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--red)}
+.step p{font-size:15px;line-height:1.55}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);margin:1.8rem 0;border:1px solid var(--rule)}
+.stat{padding:1.2rem;border-right:1px solid var(--rule)}
+.stat:last-child{border-right:0}
+.stat-value{display:block;margin-bottom:.35rem;font-size:2rem;font-weight:600;line-height:1;color:var(--blue)}
+.stat-label{display:block;font-size:10px;line-height:1.5;color:var(--mid)}
+.example{margin-top:1.8rem;padding:1.4rem;border:1px solid var(--rule);background:var(--wash)}
+.example .kicker{color:var(--mid)}
+.trace{display:grid;grid-template-columns:auto 1fr;gap:.65rem 1rem;margin-top:1rem;font-size:15px}
+.trace-label{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--faint);padding-top:.25rem}
+.trace-text{color:var(--body)}
+.boundary{color:var(--red);font-weight:600}
+.takeaway{font-size:1.16rem;color:var(--ink)}
+pre{margin:1.3rem 0 0;padding:1rem;overflow:auto;border:1px solid var(--rule);border-radius:3px;background:var(--wash);font-size:11px;line-height:1.6}
+footer{display:flex;justify-content:space-between;gap:1rem;padding:2.5rem 0 4rem;border-top:1px solid var(--rule);font-family:var(--mono);font-size:10px;color:var(--faint)}
+@media(max-width:650px){
+  .nav-links a:not(:last-child){display:none}
+  .hero{padding-top:3.5rem}
+  .steps,.stats{grid-template-columns:1fr}
+  .stat{border-right:0;border-bottom:1px solid var(--rule)}
+  .stat:last-child{border-bottom:0}
+  footer{flex-direction:column}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<nav>
+  <span class="logo">Commitment Boundary</span>
+  <div class="nav-links">
+    <a href="#claim">Main claim</a>
+    <a href="#evidence">Evidence</a>
+    <a href="#cite">Cite</a>
+  </div>
+</nav>
+
+<main class="page">
+  <header class="hero">
+    <p class="eyebrow">Interpretability · Chain-of-Thought · Reasoning Models</p>
+    <h1>Models make up their minds before they <em>say so.</em></h1>
+    <p class="dek">A reasoning model’s final answer often stabilizes in one sharp step, well before its chain-of-thought ends. What follows can look like deliberation without changing the answer.</p>
+    <p class="authors">Daniel Scalena · Sara Candussio · Luca Bortolussi · Elisabetta Fersini · Malvina Nissim · Gabriele Sarti</p>
+    <p class="affiliations">University of Groningen · University of Milano-Bicocca · University of Trieste · Northeastern University</p>
+    <div class="pill-row">
+      <a href="https://arxiv.org/pdf/2606.13603" class="pill">Paper (arXiv)</a>
+      <a href="https://github.com/DanielSc4/Commitment-Boundary" class="pill">Code &amp; data</a>
+    </div>
+  </header>
+
+  <figure class="teaser">
+    <img src="assets/teaser_animated.gif" alt="Animated overview of the commitment boundary: final-answer confidence rises sharply, then a probe detects when reasoning can stop.">
+    <figcaption class="caption">Reasoning moves from transient guesses to a stable final answer at the commitment boundary. A lightweight probe can detect that transition and stop generation early.</figcaption>
+  </figure>
+
+  <section id="claim">
+    <h2>The main claim</h2>
+    <p class="lead">Chain-of-thought is not uniformly causal. Across three model families and four reasoning benchmarks, we find a <strong>commitment boundary</strong>: the point where the model’s final answer suddenly reaches full-trace confidence.</p>
+    <div class="claim">
+      <p>Before the boundary, reasoning can genuinely change the answer. After it, models often keep hedging, checking, and explaining—even though those steps leave the elicited final answer essentially unchanged.</p>
+    </div>
+  </section>
+
+  <section id="evidence">
+    <h2>How we locate it</h2>
+    <p>We stop a reasoning trace after each sentence and ask the model for its answer. This gives a causal, step-by-step view of when intermediate guesses are revised and when the final answer becomes stable.</p>
+    <div class="steps">
+      <div class="step">
+        <span class="kicker">1 · Truncate</span>
+        <p>Cut the chain-of-thought after every reasoning step.</p>
+      </div>
+      <div class="step">
+        <span class="kicker">2 · Elicit</span>
+        <p>Force an answer from each partial trace.</p>
+      </div>
+      <div class="step">
+        <span class="kicker">3 · Compare</span>
+        <p>Find the step where the full-trace answer sharply stabilizes.</p>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-value">4.6×</span>
+        <span class="stat-label">larger median confidence jump at the boundary than the second-largest jump</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">&gt;90%</span>
+        <span class="stat-label">in-distribution boundary detection rate from model activations</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">3 × 4</span>
+        <span class="stat-label">model families × reasoning benchmarks evaluated</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <span class="kicker">One trace, in miniature</span>
+      <p>A model searches for the smallest multiple of 30 written only with 0s and 2s.</p>
+      <div class="trace">
+        <span class="trace-label">Before</span>
+        <span class="trace-text">It explores and rejects genuine intermediate guesses such as 20, 200, and 2200.</span>
+        <span class="trace-label boundary">Step 39</span>
+        <span class="trace-text boundary">“So number is 2220?” Final-answer confidence jumps from 0.36 to 0.995.</span>
+        <span class="trace-label">After</span>
+        <span class="trace-text">It spends another 34 sentences checking the result, while the answer remains fixed at 2220.</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Why it matters</h2>
+    <p class="takeaway">A chain-of-thought can continue to sound uncertain after the model has already committed. Surface language alone is therefore an unreliable guide to whether genuine answer revision is still happening.</p>
+    <p>The boundary is also visible in model activations. Lightweight causal attention probes detect it across unseen reasoning tasks and can use it as an adaptive early-exit signal, skipping substantial post-commitment reasoning with little loss in answer accuracy.</p>
+  </section>
+
+  <section id="cite">
+    <h2>Paper and citation</h2>
+    <p><em>Beyond the Commitment Boundary: Probing Epiphenomenal Chain-of-Thought in Large Reasoning Models.</em> 2026.</p>
+    <div class="pill-row">
+      <a href="https://arxiv.org/pdf/2606.13603" class="pill">Read the paper</a>
+      <a href="https://github.com/DanielSc4/Commitment-Boundary" class="pill">Explore the repository</a>
+    </div>
+    <pre>@article{scalena2026commitment,
+  title  = {Beyond the Commitment Boundary: Probing Epiphenomenal
+            Chain-of-Thought in Large Reasoning Models},
+  author = {Scalena, Daniel and Candussio, Sara and Bortolussi, Luca
+            and Fersini, Elisabetta and Nissim, Malvina and Sarti, Gabriele},
+  year   = {2026}
+}</pre>
+  </section>
+
+  <footer>
+    <span>Scalena, Candussio et al. · 2026</span>
+    <span>Code and data available on GitHub</span>
+  </footer>
+</main>
+</body>
+</html>

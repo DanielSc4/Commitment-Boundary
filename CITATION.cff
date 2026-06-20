@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+title: "Beyond the Commitment Boundary: Probing Epiphenomenal Chain-of-Thought in Large Reasoning Models"
+message: "If you use this software, please cite the accompanying paper."
+type: software
+authors:
+  - family-names: Scalena
+    given-names: Daniel
+  - family-names: Candussio
+    given-names: Sara
+  - family-names: Bortolussi
+    given-names: Luca
+  - family-names: Fersini
+    given-names: Elisabetta
+  - family-names: Nissim
+    given-names: Malvina
+  - family-names: Sarti
+    given-names: Gabriele
+repository-code: "https://github.com/DanielSc4/Commitment-Boundary"
+version: 0.1.0

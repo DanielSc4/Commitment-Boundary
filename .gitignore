@@ -1,0 +1,16 @@
+.DS_Store
+.env
+.venv*/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Generated artifacts are intentionally not versioned.
+data/
+outputs/
+slurm_outputs/
+*.sif
+.containers/
+.hf_cache/

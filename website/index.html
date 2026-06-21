@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Beyond the Commitment Boundary: large reasoning models often settle on their final answer well before their chain-of-thought ends.">
 <link rel="canonical" href="https://commitment-boundary.danielsc4.it/">
-<meta property="og:title" content="Beyond the Commitment Boundary">
+<meta property="og:title" content="Beyond the Commitment Boundary: Probing Epiphenomenal Chain-of-Thought in Large Reasoning Models">
 <meta property="og:description" content="Large reasoning models often settle on their final answer well before their chain-of-thought ends.">
 <meta property="og:url" content="https://commitment-boundary.danielsc4.it/">
 <meta property="og:type" content="website">
-<title>Beyond the Commitment Boundary</title>
+<title>Beyond the Commitment Boundary: Probing Epiphenomenal Chain-of-Thought in Large Reasoning Models</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -36,14 +36,17 @@ nav{
 .nav-links a{font-size:11px;letter-spacing:.05em;text-decoration:none;color:var(--mid)}
 .nav-links a:hover{color:var(--ink)}
 .page{max-width:780px;margin:auto;padding:0 1.5rem}
-.hero{padding:5rem 0 2.5rem}
+.hero{padding:4.7rem 0 2.7rem;text-align:center}
 .eyebrow{margin:0 0 1.25rem;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--mid)}
-h1{max-width:730px;margin:0 0 1.25rem;font-size:clamp(2.25rem,6.5vw,4rem);font-weight:600;line-height:1.06;letter-spacing:-.035em}
+h1{width:min(92vw,900px);margin:0 50% 1.35rem;transform:translateX(-50%);font-size:clamp(2rem,4.4vw,3.35rem);font-weight:600;line-height:1.1;letter-spacing:-.025em}
 h1 em{color:var(--red);font-weight:300}
-.dek{max-width:650px;margin:0 0 1.5rem;font-size:1.22rem;line-height:1.55;color:var(--body)}
-.authors{margin:0 0 .25rem;font-size:15px;color:var(--mid)}
-.affiliations{margin:0 0 1.8rem;font-size:11px;line-height:1.6;letter-spacing:.02em;color:var(--faint);font-family:var(--mono)}
-.pill-row{display:flex;flex-wrap:wrap;gap:.6rem}
+.dek{max-width:650px;margin:0 auto 1.5rem;font-size:1.18rem;line-height:1.55;color:var(--body)}
+.authors{max-width:690px;margin:0 auto .45rem;font-size:17px;line-height:1.55;color:var(--mid)}
+.authors a{text-decoration:none;border-bottom:1px solid transparent;transition:.15s ease}
+.authors a:hover{color:var(--blue);border-bottom-color:var(--blue)}
+.authors sup,.affiliations sup{font-size:.68em;line-height:0;vertical-align:super}
+.affiliations{max-width:720px;margin:0 auto 1.35rem;font-size:11px;line-height:1.6;letter-spacing:.02em;color:var(--faint);font-family:var(--mono)}
+.pill-row{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem}
 .pill{
   display:inline-flex;align-items:center;padding:.35rem .8rem;border:1px solid var(--rule);
   border-radius:3px;font-size:12px;text-decoration:none;transition:.15s ease
@@ -97,11 +100,18 @@ pre{margin:1.3rem 0 0;padding:1rem;overflow:auto;border:1px solid var(--rule);bo
 
 <main class="page">
   <header class="hero">
-    <p class="eyebrow">Interpretability · Chain-of-Thought · Reasoning Models</p>
-    <h1>Models make up their minds before they <em>say so.</em></h1>
-    <p class="dek">A reasoning model’s final answer often stabilizes in one sharp step, well before its chain-of-thought ends. What follows can look like deliberation without changing the answer.</p>
-    <p class="authors">Daniel Scalena · Sara Candussio · Luca Bortolussi · Elisabetta Fersini · Malvina Nissim · Gabriele Sarti</p>
-    <p class="affiliations">University of Groningen · University of Milano-Bicocca · University of Trieste · Northeastern University</p>
+    <p class="eyebrow">Paper</p>
+    <h1>Beyond the Commitment Boundary:<br>Probing Epiphenomenal Chain-of-Thought in Large Reasoning Models</h1>
+    <p class="authors">
+      <a href="https://www.danielsc4.it/">Daniel Scalena</a><sup>*1,2</sup> ·
+      <a href="https://scholar.google.com/citations?user=ktAv1wgAAAAJ&amp;hl=en">Sara Candussio</a><sup>*3</sup> ·
+      <a href="https://ai-lab.units.it/?page_id=139">Luca Bortolussi</a><sup>3</sup> ·
+      <a href="https://scholar.google.com/citations?user=7_HTCfYAAAAJ&amp;hl=en">Elisabetta Fersini</a><sup>2</sup> ·
+      <a href="https://malvinanissim.github.io/">Malvina Nissim</a><sup>1</sup> ·
+      <a href="https://gsarti.com/">Gabriele Sarti</a><sup>4</sup>
+    </p>
+    <p class="affiliations"><sup>*</sup>Equal contribution · <sup>1</sup>University of Groningen · <sup>2</sup>University of Milano-Bicocca · <sup>3</sup>University of Trieste · <sup>4</sup>Northeastern University</p>
+    <p class="dek"><em>TL;DR: A reasoning model’s final answer often stabilizes in one sharp step, well before its chain-of-thought ends. What follows can look like deliberation without changing the answer.</em></p>
     <div class="pill-row">
       <a href="https://arxiv.org/abs/2606.13603" class="pill">Paper (arXiv)</a>
       <a href="https://github.com/DanielSc4/Commitment-Boundary" class="pill">Code &amp; data</a>
